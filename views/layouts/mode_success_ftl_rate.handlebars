@@ -1,0 +1,488 @@
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+      rel="stylesheet"
+    />
+    <title>DEMO Email Template</title>
+    {{setVars
+      (object
+        "primary"
+        "#ac171c"
+        "blue"
+        "#6D8C9B"
+        "gray"
+        "#58595b"
+        "lightgray"
+        "hsla(220, 2%, 35%, 0.2)"
+        "black"
+        "#01000b"
+      )
+    }}
+    <style>
+      :root { --primary: #ac171c; --blue: #6D8C9B; --gray: #58595b; --lightgray:
+      hsla(220, 2%, 35%, 0.2); --black: #01000b } body { color: #000000;
+      background-color: #F5F5F5; margin: 0; font-weight: 500; }
+
+      {{#isEqual
+        generated.response_reformat.data.result.customer_type "sunteck"
+      }}
+
+        {{setVars
+          (object
+            "primary"
+            "#ac171c"
+            "secondary"
+            "#6D8C9B"
+            "gray"
+            "#58595b"
+            "lightgray"
+            "hsla(220, 2%, 35%, 0.2)"
+            "black"
+            "#01000b"
+          )
+        }}
+
+      {{/isEqual}}
+
+      {{#isEqual
+        generated.response_reformat.data.result.customer_type "avenger"
+      }}
+
+        {{setVars
+          (object
+            "primary"
+            "#659ad2"
+            "secondary"
+            "#6D8C9B"
+            "gray"
+            "#58595b"
+            "lightgray"
+            "hsla(220, 2%, 35%, 0.2)"
+            "black"
+            "#01000b"
+          )
+        }}
+
+      {{/isEqual}}
+
+      {{#isEqual generated.response_reformat.data.result.customer_type "mode"}}
+
+        {{setVars
+          (object
+            "primary"
+            "#115e67"
+            "secondary"
+            "#6D8C9B"
+            "gray"
+            "#58595b"
+            "lightgray"
+            "hsla(220, 2%, 35%, 0.2)"
+            "black"
+            "#01000b"
+          )
+        }}
+
+      {{/isEqual}}
+
+      td, th { padding: 5px 20px; } p, h1, h2, h3, h4, h5, h6 { margin: 0; }
+      .location { margin: 0 0 10px 0; } .charge-desc-table tr td {
+      border-bottom: 1px solid #eeeded; } .charge-desc-table thead tr td,
+      .charge-desc-table tr:last-child td { border-bottom: none; }
+      .charge-desc-table tr:last-child td:first-child { border-radius: 5px 0 0
+      5px; } .charge-desc-table tr:last-child td:last-child { border-radius: 0
+      5px 5px 0; } ol li ul { padding-left: 15px; } .lato-light { font-family:
+      "Lato", sans-serif; font-weight: 300; font-style: normal; } .lato-regular
+      { font-family: "Lato", sans-serif; font-weight: 400; font-style: normal; }
+      .lato-bold { font-family: "Lato", sans-serif; font-weight: 700;
+      font-style: normal; }
+    </style>
+  </head>
+
+  <body class="-webkit-print-color-adjust: exact">
+    <table align="center" style="max-width:850px">
+      <tbody>
+        <tr>
+          <td>
+            <table
+              width="auto"
+              align="center"
+              border="0"
+              cellspacing="0"
+              cellpadding="10"
+              style="background-color: #ffffff; border-radius: 10px; -webkit-print-color-adjust: exact;  overflow: hidden; padding-bottom: 5px;"
+            >
+              <tbody>
+                <tr>
+                  <td colspan="2" style="padding: 15px;">
+                    <span class="lato-regular">Good
+                      {{generated.response_reformat.data.result.time_of_day}},
+                    </span>
+                    <p class="lato-regular" style="margin-bottom: 20px;">Thanks
+                      for the opportunity to serve. Please see your quote below.
+                    </p>
+                    <table
+                      style="border: 2px dashed #000000; border-radius: 5px;"
+                      width="100%"
+                    >
+                      <tbody>
+                        <tr>
+                          <td style="padding: 5px 0;">
+                            <table width="90%" cellspacing="0" cellpadding="0">
+                              <tr>
+                                <td>
+                                  <div class="location">
+                                    <p
+                                      class="lato-light"
+                                      style="font-size: 12px;"
+                                    >From
+                                    </p>
+                                    <h4
+                                      class="lato-bold"
+                                      style="font-size: 16px;"
+                                    >
+                                      {{generated.model_extraction.extracted_data.shipment_details.origin.0.city}}
+                                    </h4>
+                                    <p
+                                      style="font-size: 11px; color: {{getVar
+                                        'gray'
+                                      }};"
+                                    >
+                                      {{#if
+                                        generated.model_extraction.extracted_data.shipment_details.origin
+                                      }}
+                                        {{generated.model_extraction.extracted_data.shipment_details.origin.0.state_code}},
+                                      {{/if}}
+                                      {{generated.model_extraction.extracted_data.shipment_details.origin.0.zip_code}}
+                                    </p>
+                                    <p
+                                      style="font-size: 11px; color: {{getVar
+                                        'gray'
+                                      }};"
+                                    >
+                                      {{this.origin.agent_iata_code}}
+                                    </p>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div style="margin-left: 6px;">
+                                    <svg
+                                      width="40"
+                                      height="28"
+                                      viewBox="0 0 40 28"
+                                      fill="none"
+                                      xmlns="http://www.w3.org/2000/svg"
+                                    >
+                                      <path
+                                        d="M39.7039 10.6711V10.6383C39.7066 10.5993 39.701 10.5601 39.6875 10.5234V10.4742C39.6875 10.4414 39.6711 10.4086 39.6711 10.3758V10.343C39.6547 10.2937 39.6547 10.2609 39.6383 10.2117H39.6219L37.325 4.46953C37.1327 3.97866 36.7962 3.55758 36.3598 3.26178C35.9234 2.96597 35.4077 2.80933 34.8805 2.8125H29.2039V1.5C29.2039 1.1519 29.0656 0.818064 28.8195 0.571923C28.5734 0.325781 28.2395 0.1875 27.8914 0.1875H2.95392C2.25773 0.1875 1.59005 0.464062 1.09776 0.956345C0.60548 1.44863 0.328918 2.11631 0.328918 2.8125V21.1875C0.328918 21.8837 0.60548 22.5514 1.09776 23.0437C1.59005 23.5359 2.25773 23.8125 2.95392 23.8125H5.08673C5.37588 24.9418 6.03265 25.9427 6.95351 26.6575C7.87437 27.3723 9.00694 27.7603 10.1727 27.7603C11.3384 27.7603 12.471 27.3723 13.3918 26.6575C14.3127 25.9427 14.9695 24.9418 15.2586 23.8125H24.7742C25.0634 24.9418 25.7201 25.9427 26.641 26.6575C27.5619 27.3723 28.6944 27.7603 29.8602 27.7603C31.0259 27.7603 32.1585 27.3723 33.0793 26.6575C34.0002 25.9427 34.657 24.9418 34.9461 23.8125H37.0789C37.7751 23.8125 38.4428 23.5359 38.9351 23.0437C39.4274 22.5514 39.7039 21.8837 39.7039 21.1875V10.6875V10.6711ZM29.2039 5.4375H34.8805L36.4555 9.375H29.2039V5.4375ZM2.95392 2.8125H26.5789V13.3125H2.95392V2.8125ZM10.1727 25.125C9.65349 25.125 9.14598 24.971 8.7143 24.6826C8.28262 24.3942 7.94616 23.9842 7.74748 23.5045C7.5488 23.0249 7.49682 22.4971 7.59811 21.9879C7.69939 21.4787 7.9494 21.011 8.31651 20.6438C8.68363 20.2767 9.15136 20.0267 9.66056 19.9254C10.1698 19.8242 10.6976 19.8761 11.1772 20.0748C11.6569 20.2735 12.0668 20.6099 12.3553 21.0416C12.6437 21.4733 12.7977 21.9808 12.7977 22.5C12.7977 23.1962 12.5211 23.8639 12.0288 24.3562C11.5365 24.8484 10.8689 25.125 10.1727 25.125ZM29.8602 25.125C29.341 25.125 28.8335 24.971 28.4018 24.6826C27.9701 24.3942 27.6337 23.9842 27.435 23.5045C27.2363 23.0249 27.1843 22.4971 27.2856 21.9879C27.3869 21.4787 27.6369 21.011 28.004 20.6438C28.3711 20.2767 28.8389 20.0267 29.3481 19.9254C29.8573 19.8242 30.3851 19.8761 30.8647 20.0748C31.3444 20.2735 31.7543 20.6099 32.0428 21.0416C32.3312 21.4733 32.4852 21.9808 32.4852 22.5C32.4852 23.1962 32.2086 23.8639 31.7163 24.3562C31.224 24.8484 30.5564 25.125 29.8602 25.125Z"
+                                        fill="{{getVar 'primary'}}"
+                                      />
+                                    </svg>
+                                  </div>
+                                </td>
+                                <td>
+                                  <div class="location">
+                                    <p
+                                      class="lato-light"
+                                      style="font-size: 12px;"
+                                    >To
+                                    </p>
+                                    <h4
+                                      class="lato-bold"
+                                      style="font-size: 16px;"
+                                    >
+                                      {{generated.model_extraction.extracted_data.shipment_details.destination.0.city}}
+                                    </h4>
+                                    <p
+                                      style="font-size: 11px; color: {{getVar
+                                        'gray'
+                                      }};"
+                                    >
+                                      {{#if
+                                        generated.model_extraction.extracted_data.shipment_details.origin
+                                      }}
+                                        {{generated.model_extraction.extracted_data.shipment_details.destination.0.state_code}},
+                                      {{/if}}
+                                      {{generated.model_extraction.extracted_data.shipment_details.destination.0.zip_code}}
+                                    </p>
+                                    <p
+                                      style="font-size: 11px; color: {{getVar
+                                        'gray'
+                                      }};"
+                                    >
+                                      {{this.destination.agent_iata_code}}
+                                    </p>
+                                  </div>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td colspan="3">
+                                  <p
+                                    style="font-size: 14px; margin-bottom: 15px;"
+                                  ><span
+                                      style="font-size: 15px; display: block; margin-bottom: 3px; color: {{getVar
+                                        'primary'
+                                      }};"
+                                      class="lato-bold"
+                                    >Sender’s Name</span>
+                                    {{generated.extract_email.sender_user_name}}</p>
+                                  <p
+                                    style="font-size: 14px; margin-bottom: 15px;"
+                                  ><span
+                                      style="font-size: 15px; display: block; margin-bottom: 3px; color: {{getVar
+                                        'primary'
+                                      }};"
+                                      class="lato-bold"
+                                    >Sender’s Email</span>{{generated.extract_email.sender_email_address}}
+                                  </p>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                          <td
+                            style="-webkit-print-color-adjust: exact;  border-radius: 5px; padding: 15px 15px; background: {{getVar
+                              'lightgray'
+                            }}"
+                          >
+                            <table
+                              cellspacing="0"
+                              cellpadding="0"
+                              width="250px"
+                            >
+                              <tr>
+                                <td>
+                                  <div class="location-detail">
+                                    <p
+                                      style="font-size: 13px; margin-bottom: 8px;"
+                                    >
+                                      <span
+                                        style="display: block; margin-bottom: 8px; color: {{getVar
+                                          'primary'
+                                        }};"
+                                        class="lato-bold"
+                                      >Equipment Type</span>
+                                      {{generated.mapping.result.extracted_data.0.trailer_details.0.trailer_type}}
+
+                                    </p>
+
+                                    <p
+                                      style="font-size: 13px; margin-bottom: 8px;"
+                                    >
+                                      <span
+                                        style="display: block; margin-bottom: 8px; color: {{getVar
+                                          'primary'
+                                        }};"
+                                        class="lato-bold"
+                                      >Quote Number</span>{{generated.generate_quotes.data.0.transaction_id}}
+                                    </p>
+
+                                  </div>
+                                </td>
+                              </tr>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding: 15px 15px;">
+                    <table
+                      style="border: 2px solid {{getVar
+                        'primary'
+                      }}; border-radius: 5px;"
+                      width="750px"
+                    >
+                      <tbody>
+                        <tr>
+                          <td style="padding: 5px 15px 0 15px;">
+                            <p style="font-size: 12px;"><span
+                                style="font-size: 14px; display: block; margin-bottom: 3px; color: {{getVar
+                                  'primary'
+                                }};"
+                              >Provider</span>
+                            </p>
+                            <p style="font-size: 12px;"><span
+                                style="font-size: 14px; display: block; margin-bottom: 3px; font-weight: 500; color: black;"
+                              >
+                                {{#isEqual
+                                  generated.response_reformat.data.result.customer_type
+                                  "sunteck"
+                                }}
+                                  SUNTECKtts
+                                {{/isEqual}}
+                                {{#isEqual
+                                  generated.response_reformat.data.result.customer_type
+                                  "avenger"
+                                }}
+                                  Avenger
+                                {{/isEqual}}
+                                {{#isEqual
+                                  generated.response_reformat.data.result.customer_type
+                                  "mode"
+                                }}
+                                  Mode
+                                {{/isEqual}}
+                              </span>
+                            </p>
+                          </td>
+                        </tr>
+                        <tr>
+                          <td colspan="2" style="padding:10px 15px;">
+                            <table
+                              width="100%"
+                              cellspacing="0"
+                              cellpadding="0"
+                              class="charge-desc-table"
+                              style="border-radius: 5px; overflow: hidden; font-size: 12px;"
+                            >
+                              <thead>
+                                <tr
+                                  style="background-color: {{getVar
+                                    'primary'
+                                  }};  -webkit-print-color-adjust: exact; "
+                                >
+                                  <!-- <td
+                                                                        style="padding: 10px 15px; color: #ffffff; font-weight: 600;">
+                                                                    Charge Description
+                                                                </td> -->
+
+                                  <td
+                                    style="padding: 10px 15px; color: #ffffff; font-weight: 600;"
+                                  >
+                                    <strong>
+                                      Total
+                                    </strong>
+                                  </td>
+                                  <td
+                                    style="padding: 10px 15px; color: #ffffff; font-weight: 600;"
+                                  >
+                                    <strong>
+                                      Fuel Surcharge
+                                    </strong>
+                                  </td>
+                                  <td
+                                    style="padding: 10px 15px; color: #ffffff; font-weight: 600;"
+                                  >
+                                    <strong>
+                                      Total Rate
+                                    </strong>
+                                  </td>
+                                  <td
+                                    style="padding: 10px 15px; color: #ffffff; font-weight: 600;"
+                                  >
+                                    Currency
+                                  </td>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                {{#each generated.generate_quotes.data}}
+                                  <tr>
+                                    <!--   <td style="padding: 10px 15px;">
+                                                                        {{this.charge_type}}
+                                                                    </td>-->
+                                    <td style="padding: 10px 25px;">
+                                      <strong>
+                                        {{this.total}}
+                                      </strong>
+                                    </td>
+                                    <td style="padding: 10px 35px;">
+                                      <strong>
+                                        {{this.fsc}}
+                                      </strong>
+                                    </td>
+                                    <td style="padding: 10px 25px;">
+                                      <strong>
+                                        {{this.total_rate}}
+                                      </strong>
+                                    </td>
+                                    <td style="padding: 10px 25px;">
+                                      <strong>
+                                        USD
+                                      </strong>
+                                    </td>
+                                  </tr>
+                                {{/each}}
+
+                              </tbody>
+                            </table>
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </td>
+                </tr>
+                <tr>
+                  <td colspan="2" style="padding:15px;">
+                    <table width="100%" style=" border-radius: 10px;">
+                      <tr>
+                        <td>
+                          <p
+                            style="font-size: 14px; color: {{getVar
+                              'primary'
+                            }}; font-weight: 600; -webkit-print-color-adjust: exact; "
+                          >
+                            THANK YOU!</p>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          {{#isEqual
+                            generated.response_reformat.data.result.customer_type
+                            "sunteck"
+                          }}
+                            <img
+                              width="200px"
+                              src="https://public-dir.s3.us-east-2.amazonaws.com/sunteck-sign.png"
+                              alt="Sunteck Logo"
+                              style="margin-top: 10px;"
+                            />
+                          {{/isEqual}}
+                          {{#isEqual
+                            generated.response_reformat.data.result.customer_type
+                            "avenger"
+                          }}
+                            <img
+                              width="300px"
+                              src="https://public-dir.s3.us-east-2.amazonaws.com/avenger-Sign.png"
+                              alt="Avenger Logo"
+                              style="margin-top: 10px;"
+                            />
+                          {{/isEqual}}
+                          {{#isEqual
+                            generated.response_reformat.data.result.customer_type
+                            "mode"
+                          }}
+                            <img
+                              width="300px"
+                              src="https://public-dir.s3.us-east-2.amazonaws.com/mode-sign.png"
+                              alt="Mode Logo"
+                              style="margin-top: 10px;"
+                            />
+                          {{/isEqual}}
+                        </td>
+                        <td
+                          class="lato-bold"
+                          style="color: white; text-align:right; font-size:1.2rem"
+                        >Quote Form</td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </td>
+        </tr>
+      </tbody>
+
+    </table>
+  </body>
+
+</html>
